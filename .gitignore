@@ -22,3 +22,17 @@ Thumbs.db
 *.trace.db
 data/
 logs/
+
+# Parte escrita da APS (mantida apenas localmente)
+03-objetivo-motivacao.md
+04-introducao.md
+05-fundamentos-web-services.md
+07-projeto-programa.md
+08-relatorio-codigo.md
+10-bibliografia.md
+APS-CC-7_8.md
+_09-apresentacao.md
+_11-ficha-aps.md
+_capa-indice.md
+plano-desenvolvimento.md
+trabalho-final.md
