@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Resíduos - Resíduos</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/api.js"></script>
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar">
+        <div class="logo">Gestão de Resíduos<small>ISO 14000 · APS</small></div>
+        <a href="index.html">Dashboard</a>
+        <a href="setores.html">Setores</a>
+        <a href="residuos.html" class="ativo">Resíduos</a>
+        <a href="pontos.html">Pontos de Coleta</a>
+        <a href="coletas.html">Coletas</a>
+        <a href="recicladores.html">Recicladores</a>
+        <a href="relatorios.html">Relatórios</a>
+    </nav>
+
+    <main class="conteudo">
+        <h1>Resíduos</h1>
+        <div class="subtitulo">Registro dos resíduos gerados pelos setores</div>
+
+        <div id="alerta" class="alerta"></div>
+
+        <div class="barra-acoes">
+            <button class="btn" onclick="abrirFormulario()">+ Registrar resíduo</button>
+            <div class="filtros">
+                <select id="filtro-setor" onchange="carregar()">
+                    <option value="">Todos os setores</option>
+                </select>
+                <select id="filtro-tipo" onchange="carregar()">
+                    <option value="">Todos os tipos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="formulario" id="formulario">
+            <h3 id="form-titulo">Novo resíduo</h3>
+            <div class="campos">
+                <div class="campo">
+                    <label>Tipo *</label>
+                    <select id="tipo">
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Descrição *</label>
+                    <input type="text" id="descricao" maxlength="255">
+                </div>
+                <div class="campo">
+                    <label>Quantidade (kg) *</label>
+                    <input type="number" id="quantidadeKg" min="0.01" step="0.01">
+                </div>
+                <div class="campo">
+                    <label>Setor de origem *</label>
+                    <select id="setorId">
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" onclick="salvar()">Salvar</button>
+            <button class="btn secundario" onclick="fecharFormulario()">Cancelar</button>
+        </div>
+
+        <div class="tabela-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Setor</th>
+                        <th>Data de geração</th>
+                        <th style="width:110px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="linhas"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="js/residuos.js"></script>
+</body>
+</html>

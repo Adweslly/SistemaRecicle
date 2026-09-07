@@ -1,0 +1,24 @@
+# Compilacao / build
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+# Dependencias locais
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE / SO
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.DS_Store
+Thumbs.db
+
+# Banco de dados local
+*.mv.db
+*.trace.db
+data/
+logs/

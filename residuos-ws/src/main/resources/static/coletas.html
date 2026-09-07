@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Resíduos - Coletas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/api.js"></script>
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar">
+        <div class="logo">Gestão de Resíduos<small>ISO 14000 · APS</small></div>
+        <a href="index.html">Dashboard</a>
+        <a href="setores.html">Setores</a>
+        <a href="residuos.html">Resíduos</a>
+        <a href="pontos.html">Pontos de Coleta</a>
+        <a href="coletas.html" class="ativo">Coletas</a>
+        <a href="recicladores.html">Recicladores</a>
+        <a href="relatorios.html">Relatórios</a>
+    </nav>
+
+    <main class="conteudo">
+        <h1>Coletas</h1>
+        <div class="subtitulo">Procedimento de coleta: solicitada, agendada, realizada ou cancelada</div>
+
+        <div id="alerta" class="alerta"></div>
+
+        <div class="barra-acoes">
+            <button class="btn" onclick="abrirFormulario()">+ Solicitar coleta</button>
+            <div class="filtros">
+                <select id="filtro-status" onchange="carregar()">
+                    <option value="">Todos os status</option>
+                </select>
+                <input type="number" id="filtro-mes" placeholder="Mês" min="1" max="12" style="width:70px" onchange="carregar()">
+                <input type="number" id="filtro-ano" placeholder="Ano" style="width:80px" onchange="carregar()">
+            </div>
+        </div>
+
+        <div class="formulario" id="formulario">
+            <h3>Solicitar coleta</h3>
+            <div class="campos">
+                <div class="campo">
+                    <label>Ponto de coleta *</label>
+                    <select id="pontoColetaId" onchange="atualizarTipoAceito()">
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Resíduo aceito no ponto</label>
+                    <input type="text" id="tipoAceitoExibicao" disabled>
+                </div>
+                <div class="campo">
+                    <label>Tipo de resíduo *</label>
+                    <select id="tipoResiduo">
+                        <option value="">Selecione...</option>
+                    </select>
+                </div>
+                <div class="campo">
+                    <label>Quantidade (kg) *</label>
+                    <input type="number" id="quantidadeKg" min="0.01" step="0.01">
+                </div>
+                <div class="campo">
+                    <label>Reciclador de destino</label>
+                    <select id="recicladorId">
+                        <option value="">Sem destinação definida</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" onclick="salvarNova()">Solicitar</button>
+            <button class="btn secundario" onclick="fecharFormulario()">Cancelar</button>
+        </div>
+
+        <div class="formulario" id="formulario-status">
+            <h3 id="status-titulo">Transição de status</h3>
+            <div class="campos">
+                <div class="campo">
+                    <label>Data prevista (agendamento)</label>
+                    <input type="datetime-local" id="dataPrevista">
+                </div>
+                <div class="campo">
+                    <label>Reciclador de destino</label>
+                    <select id="recicladorIdStatus">
+                        <option value="">Sem destinação definida</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn" id="btn-status" onclick="confirmarStatus()">Confirmar</button>
+            <button class="btn secundario" onclick="fecharFormularioStatus()">Cancelar</button>
+        </div>
+
+        <div class="tabela-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Ponto de coleta</th>
+                        <th>Setor</th>
+                        <th>Resíduo</th>
+                        <th>Quantidade</th>
+                        <th>Solicitação</th>
+                        <th>Prevista</th>
+                        <th>Destino</th>
+                        <th>Status</th>
+                        <th style="width:150px">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="linhas"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="js/coletas.js"></script>
+</body>
+</html>

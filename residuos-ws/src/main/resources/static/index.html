@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Resíduos - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar">
+        <div class="logo">Gestão de Resíduos<small>ISO 14000 · APS</small></div>
+        <a href="index.html" class="ativo">Dashboard</a>
+        <a href="setores.html">Setores</a>
+        <a href="residuos.html">Resíduos</a>
+        <a href="pontos.html">Pontos de Coleta</a>
+        <a href="coletas.html">Coletas</a>
+        <a href="recicladores.html">Recicladores</a>
+        <a href="relatorios.html">Relatórios</a>
+    </nav>
+
+    <main class="conteudo">
+        <h1>Dashboard</h1>
+        <div class="subtitulo">Indicadores ambientais da organização</div>
+
+        <div id="alerta" class="alerta"></div>
+
+        <div class="grid-cards" id="cards">
+            <div class="card-indicador">
+                <div class="rotulo">Resíduos registrados</div>
+                <div class="valor" id="card-residuos">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Setores ativos</div>
+                <div class="valor" id="card-setores">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Coletas realizadas</div>
+                <div class="valor" id="card-coletas-realizadas">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Coletas pendentes</div>
+                <div class="valor" id="card-coletas-pendentes">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Desvio de aterro</div>
+                <div class="valor pequeno" id="card-desvio">-</div>
+            </div>
+        </div>
+
+        <div class="painel">
+            <h2>Geração de resíduos por setor</h2>
+            <div style="max-width:450px"><canvas id="grafico-setores"></canvas></div>
+        </div>
+
+        <div class="grid-graficos">
+            <div class="painel">
+                <h2>Destinação (reciclado x aterro)</h2>
+                <canvas id="grafico-destinacao"></canvas>
+            </div>
+            <div class="painel">
+                <h2>Resíduos por tipo</h2>
+                <canvas id="grafico-tipos"></canvas>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

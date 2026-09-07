@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Resíduos - Relatórios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="js/api.js"></script>
+</head>
+<body>
+<div class="layout">
+    <nav class="sidebar">
+        <div class="logo">Gestão de Resíduos<small>ISO 14000 · APS</small></div>
+        <a href="index.html">Dashboard</a>
+        <a href="setores.html">Setores</a>
+        <a href="residuos.html">Resíduos</a>
+        <a href="pontos.html">Pontos de Coleta</a>
+        <a href="coletas.html">Coletas</a>
+        <a href="recicladores.html">Recicladores</a>
+        <a href="relatorios.html" class="ativo">Relatórios</a>
+    </nav>
+
+    <main class="conteudo">
+        <h1>Relatórios</h1>
+        <div class="subtitulo">Indicadores de desempenho ambiental (ISO 14001)</div>
+
+        <div id="alerta" class="alerta"></div>
+
+        <div class="barra-acoes">
+            <div class="filtros">
+                <input type="number" id="filtro-mes" placeholder="Mês" min="1" max="12" style="width:70px">
+                <input type="number" id="filtro-ano" placeholder="Ano (ex.: 2026)" style="width:120px">
+                <button class="btn" onclick="carregar()">Filtrar</button>
+            </div>
+        </div>
+
+        <div class="grid-cards" id="cards">
+            <div class="card-indicador">
+                <div class="rotulo">Total coletado</div>
+                <div class="valor pequeno" id="total-coletado">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Reciclado</div>
+                <div class="valor pequeno" id="total-reciclado">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Aterro</div>
+                <div class="valor pequeno" id="total-aterro">-</div>
+            </div>
+            <div class="card-indicador">
+                <div class="rotulo">Desvio de aterro</div>
+                <div class="valor" id="desvio-aterro">-</div>
+            </div>
+        </div>
+
+        <div class="grid-graficos">
+            <div class="painel">
+                <h2>Geração de resíduos por setor</h2>
+                <canvas id="grafico-setores"></canvas>
+            </div>
+            <div class="painel">
+                <h2>Destinação final</h2>
+                <canvas id="grafico-destinacao"></canvas>
+            </div>
+        </div>
+
+        <div class="painel">
+            <h2>Tabela: geração de resíduos por setor</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Setor</th>
+                        <th>Total (kg)</th>
+                        <th>Registros</th>
+                    </tr>
+                </thead>
+                <tbody id="linhas-setores"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="js/relatorios.js"></script>
+</body>
+</html>
